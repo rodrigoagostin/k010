@@ -18,7 +18,7 @@ Obrigatórios:
 
 Dentro da pasta clonada deste repositório:
 
-> **Siga: **
+> **Siga:**
 
 > - npm install gulp bower nodemon -g
 
