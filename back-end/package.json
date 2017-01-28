@@ -1,0 +1,22 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.7",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.1"
+  },
+  "devDependencies": {
+    "sendmail": "^1.1.1"
+  }
+}

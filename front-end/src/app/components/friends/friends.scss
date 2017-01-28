@@ -1,0 +1,30 @@
+md-input-container {
+  display: block;
+  clear: both;
+  width: 100%;
+}
+
+md-list-item {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.md-button {
+  margin: 0;
+}
+.friend-list {
+  margin-top: 20px;
+  max-height: 540px;
+  overflow-x: auto;
+}
+.delete { color: #E91E63; }
+.edit { color: #0D47A1; }
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}

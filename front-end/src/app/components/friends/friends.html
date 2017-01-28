@@ -1,0 +1,39 @@
+<header-title text="Bem vindos ao Friendship"></header-title>
+
+<div layout="column" class="friend">
+  <p ng-show="friends.list.length == 0"><b>Adicione uma pessoa na lista de amigo secreto!<br/> <u>E não esqueça de você!</u> rs</b></p>
+  {{ friends.error}}
+  <form>
+    <input type="hidden" ng-model="fiends.friend._id" />
+    <md-input-container>
+      <label>Nome:</label>
+      <input type="text" ng-model="friends.friend.name" ng-keyup="friends.onHandleChange()" />
+    </md-input-container>
+    <md-input-container>
+      <label>Email:</label>
+      <input type="text" ng-model="friends.friend.email" ng-keyup="friends.onHandleChange()" />
+    </md-input-container>
+
+    <md-button ng-hide="friends.isUpdate" class="md-primary md-raised" ng-click="friends.addFriend(friends.friend)">Adicionar</md-button>
+    <md-button ng-show="friends.isUpdate" class="md-primary md-raised" ng-click="friends.updateFriend(friends.friend)">Alterar</md-button>
+    <md-button ng-disabled="!friends.friend.name || !friends.friend.email" ng-click="friends.cancelFriend()" class="md-raised">Cancelar</md-button>
+    <md-button class="md-accent md-raised" ng-click="friends.friendShip()" ng-disabled="friends.list.length < 4">Sortear</md-button>
+
+  </form>
+  <small style="font-size: 10px; margin-top: 10px" ng-show="friends.list.length < 4">Mínimo de 4 participantes</small>
+</div>
+
+<md-list class="friend-list">
+  <md-list-item ng-repeat="friend in friends.list">
+    <div flex>
+      <div class="md-list-item-text">
+        <h3>{{friend.name}}</h3>
+        <p>{{friend.email}}</p>
+      </div>
+    </div>
+    <div flex style="text-align:right">
+      <md-button class="md-icon-button launch delete" ng-click="friends.deleteFriend(friend, $index)" ng-disabled="friends.friend == friend"><i class="material-icons">delete_sweep</i></md-button>
+      <md-button class="md-icon-button launch edit"   ng-click="$parent.friends.editFriend(friend)" ng-disabled="friends.friend == friend"><i class="material-icons">mode_edit</i></md-button>
+    </div>
+  </md-list-item>
+</md-list>
