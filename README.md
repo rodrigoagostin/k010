@@ -26,6 +26,7 @@ Dentro da pasta clonada deste repositório:
 >
 > - cd front-end
 > - npm install
+> - bower install
 
 > **[Back-end]**
 >
