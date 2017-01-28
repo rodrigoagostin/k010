@@ -14,14 +14,16 @@ export function FriendsDirective() {
 
 class FriendsController {
   /*@ngInject*/
-  constructor(FriendsService, ValidateService, $log){
-    this.$log = $log;
+  constructor(FriendsService, ValidateService, $log, $mdDialog){
+    this.$mdDialog = $mdDialog;
+    this.$log      = $log;
     this.error;
-    this.friend = {};
-    this.list = [];
-    this.service = FriendsService
-    this.validate = ValidateService;
-    this.isUpdate = false;
+    this.friend    = {};
+    this.list      = [];
+    this.service   = FriendsService
+    this.validate  = ValidateService;
+    this.isUpdate  = false;
+    this.finish    = false;
 
     this.service.getList().then(friends => {
       this.list = friends.data;
@@ -81,7 +83,7 @@ class FriendsController {
     if (friend) {
       this.service.deleteFriend(friend).then(() => {
         this.list.splice(index, 1);
-      }, function(err) {
+      }, (err) => {
         this.$log.info(err);
       });
     }
@@ -92,11 +94,35 @@ class FriendsController {
       this.error = 'O mínimo de 4 participantes para sortear!';
     } else {
       this.service.bingo().then(res => {
+        this.showDialog();
+        this.finish = true;
         this.$log.info(res);
       }, err => {
         this.$log.info(err);
       })
     }
+  }
+
+  showDialog() {
+    let alert = this.$mdDialog.alert({
+      title: 'Sorteio realizado com sucesso!',
+      content: 'O nome dos amigos sorteados foram enviados por email.',
+      ok: 'Fechar'
+    });
+
+    this.$mdDialog.show( alert )
+      .finally(function() {
+        alert = undefined;
+      });
+  }
+
+  restart() {
+    this.service.restart().then(() => {
+      this.list     = undefined;
+      this.finish   = false;
+      this.isUpdate = false;
+      this.friend   = undefined;
+    });
   }
 
 }

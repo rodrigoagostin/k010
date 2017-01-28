@@ -24,6 +24,10 @@ export class FriendsService {
     return this.$http.post('http://localhost:3090/bingo');
   }
 
+  restart() {
+    return this.$http.post('http://localhost:3090/restart');
+  }
+
 }
 
 FriendsService.$inject = ['$http'];

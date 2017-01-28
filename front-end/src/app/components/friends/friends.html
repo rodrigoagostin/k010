@@ -18,7 +18,7 @@
     <md-button ng-show="friends.isUpdate" class="md-primary md-raised" ng-click="friends.updateFriend(friends.friend)">Alterar</md-button>
     <md-button ng-disabled="!friends.friend.name || !friends.friend.email" ng-click="friends.cancelFriend()" class="md-raised">Cancelar</md-button>
     <md-button class="md-accent md-raised" ng-click="friends.friendShip()" ng-disabled="friends.list.length < 4">Sortear</md-button>
-
+    <md-button class="md-primary md-raised" ng-click="friends.restart()" ng-disabled="!friends.finish">Recomeçar</md-button>
   </form>
   <small style="font-size: 10px; margin-top: 10px" ng-show="friends.list.length < 4">Mínimo de 4 participantes</small>
 </div>

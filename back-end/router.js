@@ -7,5 +7,6 @@ module.exports = function(app) {
   app.put('/:id', Friends.updateFriend);
   app.delete('/:id', Friends.deleteFriend);
   app.post('/bingo', Friends.bingo);
+  app.post('/restart', Friends.restart);
 
 }

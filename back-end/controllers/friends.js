@@ -64,6 +64,13 @@ exports.save = function(req, res, next) {
   });
 }
 
+exports.restart = function(req, res, next) {
+    Friend.remove({}, function(err) {
+    if (err) return next(err);
+    res.json({status: 'ok'});
+  })
+}
+
 exports.bingo = function(req, res, next) {
   var newList = [];
   Friend.find({}, function(err, friends) {
